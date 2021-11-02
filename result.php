@@ -1,4 +1,10 @@
-<?php include "header.php"?>
+<?php
+require "config.php";
+require "models/db.php";
+require "models/product.php";
+$product = new Product;
+include "header.php"
+?>
 
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
@@ -237,6 +243,7 @@
 
 						<!-- store products -->
 						<div class="row">
+
 							<?php if(isset($_GET['keyword']))
 							{
 								$keyword = $_GET['keyword'];
