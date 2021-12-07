@@ -1,5 +1,17 @@
 <?php
+session_start();
 ?>
+<?php
+require "config.php";
+require "models/db.php";
+require "models/product.php";
+$product = new Product;
+require "models/manufacture.php";
+$manufacture = new Manufacture;
+require "models/protype.php";
+$protype = new protype;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +43,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+ 
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -186,7 +199,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Nhom 10</a>
         </div>
       </div>
 
@@ -201,3 +214,50 @@
           </div>
         </div>
       </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="index.php" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="products.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Product
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="manufactures.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Manufacture</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="protypes.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Protype</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="addproduct.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Add Product</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

@@ -245,12 +245,7 @@ include "header.php"
                         <?php if(isset($_GET['manu_id'])){
                             $manu_id = $_GET['manu_id'];
                         }
-                                
-                                
-                                
-                                // hiển thị 1 sản phẩm trên 1 trang
                                 $perPage = 1;
-                                // Lấy số trang trên thanh địa chỉ
                                 if(isset($_GET['page']))
                                 {
                                     $page = $_GET['page'];
@@ -258,7 +253,6 @@ include "header.php"
                                 else{
                                     $page=1;
                                 }
-                                // Tính tổng số dòng, ví dụ kết quả là 18
                                 $getAllManuById = $manu->getProductByManuId($manu_id);
                                 $total = count($getAllManuById);
                                 $url = $_SERVER['PHP_SELF']."?manu_id=".$manu_id;
