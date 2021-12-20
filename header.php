@@ -3,11 +3,15 @@ require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
+require "models/protype.php";
 
 $product = new Product;
 $getAllProduct= $product->getAllProducts();
+$getAllProducts5 = $product->getAllProducts5();
 
 
+$protype= new Protype;
+$getAllProtype = $protype->getAllProtype();
 
 $manu = new Manufacture;
 $getAllManu = $manu->getAllManu();
@@ -181,7 +185,7 @@ $getAllManu = $manu->getAllManu();
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="index.php">Home</a></li>
+						<li class=""><a href="index.php">Home</a></li>
 						<?php foreach($getAllManu as $value): ?>
 						<li><a href="product.php?manu_id=<?php echo $value['manu_id']?>"><?php echo $value['manu_name']?></a></li>
 						<?php endforeach ?>

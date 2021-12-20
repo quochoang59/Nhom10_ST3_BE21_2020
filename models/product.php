@@ -39,6 +39,35 @@ class Product extends Db
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
-    
+    }
+
+    public function detailProduct($id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE id = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items;
+    }
+    public function get3ProductByManuId($manu_id,$page, $perPage)
+    {
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE manu_id = ? LIMIT ?, ?");
+        $sql->bind_param("iii", $manu_id,$firstLink, $perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    function getRelatedProducts()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products`, `manufactures` 
+        WHERE `products`.`id` = `manufactures`.`manu_id` ORDER BY RAND() LIMIT 0, 4;");
+        $sql->execute();//return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items;
+    }
     
 }

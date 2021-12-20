@@ -60,12 +60,12 @@
                       <td><?php echo $value['manu_id'] ?></td>
                       <td><?php echo $value['manu_name'] ?></td>
                       <td class="project-actions text-center">
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm" href="editmanufactues.php?id=<?php echo $value ['manu_id'] ?>">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="#">
+                          <a class="btn btn-danger btn-sm" href="delmn.php?manu_id=<?php echo $value['manu_id'] ?>">
                               <i class="fas fa-trash">
                               </i>
                               Delete

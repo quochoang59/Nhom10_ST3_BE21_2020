@@ -28,4 +28,4 @@
  else{
      echo "0";
  }
- header('location:index.php');
+ header('location:products.php');

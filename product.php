@@ -1,6 +1,4 @@
 <?php
-require "config.php";
-require "models/db.php";
 include "header.php"
  ?>
  
@@ -242,24 +240,7 @@ include "header.php"
 
 						<!-- store products -->
 						<div class="row">
-                        <?php if(isset($_GET['manu_id'])){
-                            $manu_id = $_GET['manu_id'];
-                        }
-                                $perPage = 1;
-                                if(isset($_GET['page']))
-                                {
-                                    $page = $_GET['page'];
-                                }
-                                else{
-                                    $page=1;
-                                }
-                                $getAllManuById = $manu->getProductByManuId($manu_id);
-                                $total = count($getAllManuById);
-                                $url = $_SERVER['PHP_SELF']."?manu_id=".$manu_id;
-                                $get1AllManuById = $manu->get1ProductByManuId($manu_id,$page,$perPage);
-                                foreach($get1AllManuById as $value):
-
-                            ?>
+                        
 							<!-- product -->
                             
 							<div class="col-md-4 col-xs-6">
@@ -295,8 +276,7 @@ include "header.php"
 							</div>
                             
 							<!-- /product -->
-                            <?php endforeach;
-                            ?>
+                           
 						</div>
 						<!-- /store products -->
 
