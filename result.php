@@ -1,12 +1,7 @@
 <?php
-require "config.php";
-require "models/db.php";
-require "models/product.php";
-$product = new Product;
 include "header.php"
 ?>
-
-		<!-- BREADCRUMB -->
+	<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
@@ -174,41 +169,7 @@ include "header.php"
 						<!-- /aside Widget -->
 
 						<!-- aside Widget -->
-						<div class="aside">
-							<h3 class="aside-title">Top selling</h3>
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="./img/product01.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								</div>
-							</div>
-
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="./img/product02.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								</div>
-							</div>
-
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="./img/product03.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								</div>
-							</div>
-						</div>
+						
 						<!-- /aside Widget -->
 					</div>
 					<!-- /ASIDE -->
@@ -241,17 +202,31 @@ include "header.php"
 						</div>
 						<!-- /store top filter -->
 
+
 						<!-- store products -->
 						<div class="row">
 
 							<?php if(isset($_GET['keyword']))
 							{
+							
 								$keyword = $_GET['keyword'];
-								$search = $product->search($keyword);
+								// hiển thị 1 sản phẩm trên 1 trang
+                                $perPage = 1;
+                                // Lấy số trang trên thanh địa chỉ
+                                if(isset($_GET['page']))
+                                {
+                                    $page = $_GET['page'];
+                                }
+                                else{
+                                    $page=1;
+                                }
+								$search2 = $product->search2($keyword);
+								$total = count($search2);
+                                $url = $_SERVER['PHP_SELF']."?keyword=".$keyword;
+								$search = $product->search($keyword,$page,$perPage);
 							}
 							foreach($search as $value):
 							?>
-							<!-- product -->
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
@@ -284,8 +259,10 @@ include "header.php"
 								</div>
 								
 							</div>
-							<!-- /product -->
-							<?php endforeach ?>	
+								<!-- /product -->
+								<?php 
+							endforeach;
+							?>	
 						</div>
 						<!-- /store products -->
 
@@ -293,11 +270,8 @@ include "header.php"
 						<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
 							<ul class="store-pagination">
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							<?php echo $manu->paginate($url, $total, $page, $perPage);?>
+								
 							</ul>
 						</div>
 						<!-- /store bottom filter -->
@@ -346,4 +320,4 @@ include "header.php"
 		</div>
 		<!-- /NEWSLETTER -->
 
-	<?php include "footer" ?>
+<?php include "footer.php" ?>

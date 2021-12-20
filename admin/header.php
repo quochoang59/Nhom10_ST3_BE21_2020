@@ -255,6 +255,18 @@ $protype = new protype;
               <p>Add Product</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="addmanufacture.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Add Manufacture</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="addprotype.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Add Protype</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -3,25 +3,47 @@ session_start();
 require "../config.php";
 require "../models/db.php";
 require "../models/user.php";
-if(!isset($_SESSION['user']))
-{
-	header('location:../login/login.php');
-}
+include "header.php";
+//if(!isset($_SESSION['user']))
+//{
+	//header('location:../login/login.php');
+//}
 
 $user = new User;
 if(isset($_POST['submit']))
 {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	if($user->CheckLogin($username,$password))
+
+	//neu sai mat khau
+	if($user->CheckLogin($username,$password)){
+		//echo '<script>alert("Tài khoản hoặc mật khẩu không đúng!")</script>';
+		//header('location:../login/login.php');
+		$_SESSION['user']=$username;
+		header('location:../index.php'); 
+	}
+	elseif($user->CheckLoginAdmin($username,$password))
 	{
 		$_SESSION['user']=$username;
 		header('location:../admin/index.php'); 
 	}
 	else
 	{
-		header('location:../login/login.php');
+		
+		//header('location:../login/login.php');
+		echo '<script>alert("Tài khoản hoặc mật khẩu không đúng!")</script>'; 
 	}
+	//neu la admin
+	/*if($user->CheckLoginAdmin($username,$password))	{
+		$_SESSION['user']=$username;
+		header('location:../admin/index.php'); 
+		
+	}
+	else
+	{
+		echo '<script>alert("Tài khoản hoặc mật khẩu không đúng!")</script>'; 
+		header('location:../login/login.php');
+	}*/
 }
 ?>
 <body>
@@ -31,9 +53,9 @@ if(isset($_POST['submit']))
 			<div class="card-header">
 				<h3>Sign In</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
+					<span><a href="http://www.facebook.com.vn"><i  class="fab fa-facebook-square"></a></i></span>
+					<span><a href="https://www.google.com/?hl=vi"><i class="fab fa-google-plus-square"></a></i></span>
+					<span><a href="https://twitter.com/?lang=vi"><i class="fab fa-twitter-square"></a></i></span>
 				</div>
 			</div>
 			<div class="card-body">
@@ -62,9 +84,7 @@ if(isset($_POST['submit']))
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="#">Sign Up</a>
 				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
+				
 			</div>
 		</div>
 	</div>

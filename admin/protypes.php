@@ -60,12 +60,12 @@
                       <td><?php echo $value['type_id'] ?></td>
                       <td><?php echo $value['type_name'] ?></td>
                       <td class="project-actions text-center">
-                          <a class="btn btn-info btn-sm" href="#">
-                              <i class="fas fa-pencil-alt">
+                          <a class="btn btn-info btn-sm" href="editprotype.php?type_id=<?php echo $value['type_id'] ?>">
+                              <i class="fas fa-pencil-alt" >
                               </i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="#">
+                          <a class="btn btn-danger btn-sm" href="delprt.php?type_id=<?php echo $value['type_id'] ?>">
                               <i class="fas fa-trash">
                               </i>
                               Delete

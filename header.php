@@ -3,11 +3,15 @@ require "config.php";
 require "models/db.php";
 require "models/product.php";
 require "models/manufacture.php";
+require "models/protype.php";
 
 $product = new Product;
 $getAllProduct= $product->getAllProducts();
+$getAllProducts5 = $product->getAllProducts5();
 
 
+$protype= new Protype;
+$getAllProtype = $protype->getAllProtype();
 
 $manu = new Manufacture;
 $getAllManu = $manu->getAllManu();
@@ -20,7 +24,7 @@ $getAllManu = $manu->getAllManu();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>Nhóm 6</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -181,7 +185,7 @@ $getAllManu = $manu->getAllManu();
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="index.php">Home</a></li>
+						<li class=""><a href="index.php">Home</a></li>
 						<?php foreach($getAllManu as $value): ?>
 						<li><a href="product.php?manu_id=<?php echo $value['manu_id']?>"><?php echo $value['manu_name']?></a></li>
 						<?php endforeach ?>
