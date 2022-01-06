@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
 	{
 		if($user->CheckRegister($username,$password))
 		{
-			$_SESSION['user']=$username;
+			$_SESSION['username']=$username;
 			header('location:../index.php'); 
 		}
 		else

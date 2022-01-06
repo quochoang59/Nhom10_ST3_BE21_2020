@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "config.php";
 require "models/db.php";
 require "models/product.php";
@@ -8,10 +9,14 @@ require "models/protype.php";
 $product = new Product;
 $getAllProduct= $product->getAllProducts();
 $getAllProducts5 = $product->getAllProducts5();
+$getNewProducts = $product->getNewProducts();
+$getCheapProducts = $product->getCheapProducts();
 
 
 $protype= new Protype;
 $getAllProtype = $protype->getAllProtype();
+
+
 
 $manu = new Manufacture;
 $getAllManu = $manu->getAllManu();
@@ -65,8 +70,19 @@ $getAllManu = $manu->getAllManu();
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+						<?php 
+						if(!isset($_SESSION['username']))
+						{
+							echo('<li><a href="./login/login.php"><i class="fa fa-user-o"></i> Login</a></li>');
+						}
+						else
+						{
+							echo('<li><a href="./login/login.php"><i class="fa fa-user-o"></i>'.$_SESSION['username'].'</a></li>');
+							echo('<li><a href="./login/logout.php"><i class="fa fa-user-o"></i> Logout</a></li>');
+						}
+						?>
+						
+						
 					</ul>
 				</div>
 			</div>
@@ -108,52 +124,15 @@ $getAllManu = $manu->getAllManu();
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								<!-- Wishlist -->
-								<div>
-									<a href="#">
-										<i class="fa fa-heart-o"></i>
-										<span>Your Wishlist</span>
-										<div class="qty">2</div>
-									</a>
-								</div>
 								<!-- /Wishlist -->
 
 								<!-- Cart -->
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
+										<span><a href="cart_view.php">Your Cart</a> </span>
 										<div class="qty"></div>
 									</a>
-									<div class="cart-dropdown">
-										<div class="cart-list">
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product01.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product02.png" alt="">
-												</div>
-												
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-										</div>
-										<div class="cart-summary">
-											<small></small>
-											<h5></h5>
-										</div>
-										<div class="cart-btns">
-											<a href="cart.php">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-										</div>
-									</div>
 								</div>
 								<!-- /Cart -->
 
@@ -198,55 +177,4 @@ $getAllManu = $manu->getAllManu();
 		</nav>
 		<!-- /NAVIGATION -->
 
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
-						<div class="shop">
-							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
-							</div>
-							<div class="shop-body">
-								<h3>Laptop<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
-					</div>
-					<!-- /shop -->
-
-					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
-						<div class="shop">
-							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
-							</div>
-							<div class="shop-body">
-								<h3>Accessories<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
-					</div>
-					<!-- /shop -->
-
-					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
-						<div class="shop">
-							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
-							</div>
-							<div class="shop-body">
-								<h3>Cameras<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
-					</div>
-					<!-- /shop -->
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
+		

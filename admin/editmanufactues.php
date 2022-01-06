@@ -43,7 +43,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Name</label>
-                                <input type="text" id="inputName" class="form-control" name="name" value="<?php echo $values['manu_name'] ?>" >
+                                <input type="text" id="inputName" class="form-control" required="required" name="name" value="<?php echo $values['manu_name'] ?> " >
                             </div>
                             
                         </div>

@@ -1,9 +1,33 @@
 <?php
 class Product extends Db
 {
+    public function getProductCount()
+    {
+        $sql = self::$connection->prepare("SELECT COUNT(id) FROM products; ");
+        return $sql->execute(); //return an object
+        //$items = array();
+        //$items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        //return $items; //return an
+    }
     public function getAllProducts5()
     {
-        $sql = self::$connection->prepare("SELECT * FROM products order by id desc limit 0,5 ");
+        $sql = self::$connection->prepare("SELECT * FROM products order by id desc limit 0,6 ");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an
+    }
+    public function getCheapProducts()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products ORDER BY price ASC limit 3,9 ");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an
+    }
+    public function getNewProducts()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products` ORDER BY YEAR(created_at) DESC, MONTH(created_at) DESC, DAY(created_at) DESC LIMIT 5 ");
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -81,6 +105,15 @@ class Product extends Db
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
+    }
+    function getRelatedProducts()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products`, `manufactures` 
+        WHERE `products`.`id` = `manufactures`.`manu_id` ORDER BY RAND() LIMIT 0, 4;");
+        $sql->execute();//return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items;
     }
     
 }

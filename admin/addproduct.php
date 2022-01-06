@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Name</label>
-                                <input type="text" id="inputName" class="form-control" name="name">
+                                <input type="text" id="inputName" class="form-control"  required="required" name="name">
                             </div>
                             <div class="form-group">
                                 <label for="inputStatus">Manufacture</label>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputStatus">Protype</label>
-                                <select id="inputStatus" class="form-control custom-select" name="type">
+                                <select id="inputStatus" class="form-control custom-select"  name="type">
                                     <option selected disabled>Select one</option>
                                     <?php
                                     $getAllProtype = $protype->getAllProtype();
@@ -69,11 +69,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputDescription">Description</label>
-                                <textarea id="inputDescription" name="desc" class="form-control" rows="4"></textarea>
+                                <textarea id="inputDescription" name="desc" class="form-control" required="required" rows="4"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="inputClientCompany">Price</label>
-                                <input type="text" id="inputClientCompany" class="form-control" name="price">
+                                <input type="text" id="inputClientCompany" class="form-control" required="required" name="price">
                             </div>
                             <div class="form-group">
                                 <label for="inputProjectLeader">Image</label>
@@ -81,11 +81,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Feature</label>
-                                <input type="text" id="inputName" class="form-control" name="feature">
+                                <input type="text" id="inputName" class="form-control" required="required" name="feature">
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Created_at</label>
-                                <input type="text" id="inputName" class="form-control" name="Created_at">
+                                <input type="text" id="inputName" class="form-control" required="required" name="Created_at">
                             </div>
                         </div>
                         <!-- /.card-body -->

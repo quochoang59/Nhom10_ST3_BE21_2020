@@ -43,7 +43,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
-                                        <input type="text" id="inputName" class="form-control" name="name" value="<?php echo $values['name'] ?>">
+                                        <input type="text" id="inputName" class="form-control" required="required" name="name" value="<?php echo $values['name'] ?>" >
                                     </div>
                                     <div class="form-group">
                                         <label for="inputStatus">Manufacture</label>
@@ -75,11 +75,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputDescription">Description</label>
-                                        <textarea id="inputDescription" name="desc" class="form-control" rows="4"><?php echo $values['description'] ?></textarea>
+                                        <textarea id="inputDescription" name="desc" class="form-control" required="required" rows="4"><?php echo $values['description'] ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputClientCompany">Price</label>
-                                        <input type="text" id="inputClientCompany" class="form-control" name="price" value="<?php echo $values['price'] ?>">
+                                        <input type="text" id="inputClientCompany" class="form-control" required="required" name="price" value="<?php echo $values['price'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputProjectLeader">Image</label>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Feature</label>
-                                        <input type="text" id="inputName" class="form-control" name="feature" value="<?php echo $values['feature'] ?>">
+                                        <input type="text" id="inputName" class="form-control" required="required" name="feature" value="<?php echo $values['feature'] ?>">
                                     </div>
                                     
                                 </div>

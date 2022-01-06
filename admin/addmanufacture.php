@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Name</label>
-                                <input type="text" id="inputName" class="form-control" name="name">
+                                <input type="text" id="inputName" class="form-control" required="required" name="name">
                             </div>
                             
                         </div>

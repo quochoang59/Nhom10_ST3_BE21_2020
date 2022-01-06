@@ -1,10 +1,13 @@
 <?php
 
+
+
 	include "header.php";
 
+ ?>
+ 
 
-?>
-	<!-- BREADCRUMB -->
+		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
@@ -29,11 +32,61 @@
 					<!-- ASIDE -->
 					<div id="aside" class="col-md-3">
 						<!-- aside Widget -->
-						
+						<div class="aside">
+							<h3 class="aside-title">Categories</h3>
+							<div class="checkbox-filter">
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-1">
+									<label for="category-1">
+										<span></span>
+										Apple
+										<small>(120)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-2">
+									<label for="category-2">
+										<span></span>
+										Lenovo
+										<small>(740)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-3">
+									<label for="category-3">
+										<span></span>
+										Samsung
+										<small>(1450)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-4">
+									<label for="category-4">
+										<span></span>
+										Dell
+										<small>(578)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-5">
+									<label for="category-5">
+										<span></span>
+										Sony
+										<small>(120)</small>
+									</label>
+								</div>
+
+								
+							</div>
+						</div>
 						<!-- /aside Widget -->
 
 						
-
 						
 
 						<!-- aside Widget -->
@@ -70,15 +123,15 @@
 						</div>
 						<!-- /store top filter -->
 
-
 						<!-- store products -->
 						<div class="row">
-
-							<?php if(isset($_GET['keyword']))
-							{
-							
-								$keyword = $_GET['keyword'];
-								// hiển thị 1 sản phẩm trên 1 trang
+                        <?php if(isset($_GET['type_id'])){
+                            $type_id = $_GET['type_id'];
+                        }
+                                
+                                
+                                
+                                // hiển thị 1 sản phẩm trên 1 trang
                                 $perPage = 1;
                                 // Lấy số trang trên thanh địa chỉ
                                 if(isset($_GET['page']))
@@ -88,13 +141,16 @@
                                 else{
                                     $page=1;
                                 }
-								$search2 = $product->search2($keyword);
-								$total = count($search2);
-                                $url = $_SERVER['PHP_SELF']."?keyword=".$keyword;
-								$search = $product->search($keyword,$page,$perPage);
-							}
-							foreach($search as $value):
-							?>
+                                // Tính tổng số dòng, ví dụ kết quả là 18
+                                $getProtypeById = $protype->getProtypeById($type_id);
+                                $total = count($getProtypeById);
+                                $url = $_SERVER['PHP_SELF']."?type_id=".$type_id;
+                                $get1ProtypeById = $protype->get1ProtypeById($type_id,$page,$perPage);
+                                foreach($get1ProtypeById as $value):
+
+                            ?>
+							<!-- product -->
+                            
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
@@ -104,8 +160,8 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
-										<h4 class="product-price"><?php echo number_format($value['price'])?>VND</del></h4>
+										<h3 class="product-name"><a href="#"><?php echo $value['name']?></a></h3>
+										<h4 class="product-price"><?php echo number_format($value['price'])?> <del class="product-old-price">$990.00</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -114,6 +170,7 @@
 											<i class="fa fa-star"></i>
 										</div>
 										<div class="product-btns">
+											
 										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp"><a class="btn btn-info btn-sm" href="detail.php?id=<?php echo $value ['id'] ?>">quick view </a></span></button>
 										</div>
 									</div>
@@ -123,12 +180,11 @@
 									</form>
 									</div>
 								</div>
-								
 							</div>
-								<!-- /product -->
-								<?php 
-							endforeach;
-							?>	
+                            
+							<!-- /product -->
+                            <?php endforeach;
+                            ?>
 						</div>
 						<!-- /store products -->
 
@@ -136,8 +192,7 @@
 						<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
 							<ul class="store-pagination">
-							<?php echo $manu->paginate($url, $total, $page, $perPage);?>
-								
+                            <?php echo $manu->paginate($url, $total, $page, $perPage);?>
 							</ul>
 						</div>
 						<!-- /store bottom filter -->
@@ -186,4 +241,4 @@
 		</div>
 		<!-- /NEWSLETTER -->
 
-<?php include "footer.php" ?>
+		<?php include"footer.php"?>

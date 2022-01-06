@@ -20,7 +20,9 @@
 
           if(isset($_FILES['image']['name']))
         {
+            
             $image =  $_FILES['image']['name'];
+
         }else
         {
             $image = $_POST['image'];

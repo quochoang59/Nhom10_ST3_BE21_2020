@@ -19,12 +19,12 @@ if(isset($_POST['submit']))
 	if($user->CheckLogin($username,$password)){
 		//echo '<script>alert("Tài khoản hoặc mật khẩu không đúng!")</script>';
 		//header('location:../login/login.php');
-		$_SESSION['user']=$username;
+		$_SESSION['username']=$username;
 		header('location:../index.php'); 
 	}
 	elseif($user->CheckLoginAdmin($username,$password))
 	{
-		$_SESSION['user']=$username;
+		$_SESSION['username']=$username;
 		header('location:../admin/index.php'); 
 	}
 	else
@@ -53,9 +53,7 @@ if(isset($_POST['submit']))
 			<div class="card-header">
 				<h3>Sign In</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><a href="http://www.facebook.com.vn"><i  class="fab fa-facebook-square"></a></i></span>
-					<span><a href="https://www.google.com/?hl=vi"><i class="fab fa-google-plus-square"></a></i></span>
-					<span><a href="https://twitter.com/?lang=vi"><i class="fab fa-twitter-square"></a></i></span>
+					
 				</div>
 			</div>
 			<div class="card-body">
@@ -73,7 +71,7 @@ if(isset($_POST['submit']))
 						<input type="password" name="password" class="form-control" placeholder="password">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						
 					</div>
 					<div class="form-group">
 						<input type="submit" name="submit" value="Login" class="btn float-right login_btn">
