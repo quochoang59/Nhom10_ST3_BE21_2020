@@ -79,6 +79,12 @@ if(isset($_POST['submit']))
 					</div>
 				</form>
 			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Already have an account?<a href="login.php">Sign In</a>
+				</div>
+				
+			</div>
 		</div>
 	</div>
 </div>
